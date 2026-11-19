@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>diff viewer — 単語単位の差分</title>
+<title>diff viewer - 単語単位の差分</title>
 <script>
   try {
     var savedTheme = JSON.parse(localStorage.getItem('diff-viewer-v2') || 'null');
@@ -519,10 +519,10 @@
   <h2>この差分の作り方</h2>
   <p>行単位の差分だけでは「どこが変わったか」が粗すぎるため、4 段階で比較しています。</p>
   <ol>
-    <li><b>行の対応付け</b> — Myers 法で行を比較します。変更ブロックの中は行の類似度（文字バイグラムの Dice 係数）を動的計画法で最大化して 1 対 1 に対応させます。</li>
-    <li><b>単語単位の差分</b> — 対応した行の中を <code>Intl.Segmenter</code> で単語に分割して比較します。日本語は空白がないため、形態素に近い単位で切られます。</li>
-    <li><b>意味的なクリーニング</b> — diff-match-patch の semantic cleanup と同じ考え方で、前後の変更より短い一致部分を変更側へ吸収します。細切れのハイライトが消えます。</li>
-    <li><b>文字単位の精密化</b> — 変更された単語どうしが十分似ている場合は文字単位で再比較し、<code>2023</code> → <code>2024</code> の 1 文字だけを強調します。</li>
+    <li><b>行の対応付け</b>：Myers 法で行を比較します。変更ブロックの中は行の類似度（文字バイグラムの Dice 係数）を動的計画法で最大化して 1 対 1 に対応させます。</li>
+    <li><b>単語単位の差分</b>：対応した行の中を <code>Intl.Segmenter</code> で単語に分割して比較します。日本語は空白がないため、形態素に近い単位で切られます。</li>
+    <li><b>意味的なクリーニング</b>：diff-match-patch の semantic cleanup と同じ考え方で、前後の変更より短い一致部分を変更側へ吸収します。細切れのハイライトが消えます。</li>
+    <li><b>文字単位の精密化</b>：変更された単語どうしが十分似ている場合は文字単位で再比較し、<code>2023</code> → <code>2024</code> の 1 文字だけを強調します。</li>
   </ol>
   <p>行の対応付けを先に行うのは、「どの行とどの行が対応するか」が読みやすさを最も左右するためです。構文解析 (tree-sitter) による構造差分はブラウザ単体では実現できないため、行・単語・文字の比較で近似しています。</p>
 </dialog>
@@ -1149,7 +1149,7 @@ function rowHtmlUnified(r, gid) {
     out += open('del') +
       '<td class="ln a del">' + r.aNo + '</td>' +
       '<td class="ln b"></td>' +
-      '<td class="sign">−</td>' +
+      '<td class="sign">-</td>' +
       '<td class="cell del">' + (r.aHtml != null ? r.aHtml : esc(r.aText)) + '</td>' +
       '</tr>';
   }
@@ -1270,7 +1270,7 @@ function renderRows(items, mode) {
       parts.push('<span class="chip ok">差分なし</span>');
     } else {
       if (stats.added) parts.push('<span class="chip add">+' + stats.added + ' 行</span>');
-      if (stats.removed) parts.push('<span class="chip del">−' + stats.removed + ' 行</span>');
+      if (stats.removed) parts.push('<span class="chip del">-' + stats.removed + ' 行</span>');
       parts.push('<span class="chip">変更 ' + stats.changes + ' 箇所</span>');
       parts.push('<span class="chip">類似度 ' + Math.round(stats.sim * 100) + '%</span>');
     }
