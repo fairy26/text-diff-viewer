@@ -1,6 +1,6 @@
 # text-diff-viewer
 
-2 つのテキストを貼り付けて差分を見る、単一ファイルの HTML ツールです。HTML 1 ファイル（約 50KB）で、ビルドは不要です。外部ライブラリとネットワークに依存しません。
+2 つのテキストを貼り付けて差分を見る HTML ツールです。1 ファイル（約 50KB）で、ビルドは不要です。外部ライブラリとネットワークに依存しません。
 
 **デモ**: https://fairy26.github.io/text-diff-viewer/
 
@@ -17,7 +17,7 @@
 
 1. 左右の入力欄にテキストを貼り付けます。
 2. 「並べて表示」と「まとめて表示」を切り替えます。
-3. 歯車ボタンで、文字単位の精密化、空白の無視、大文字小文字の無視、コンテキスト行数を変えます。
+3. 表示設定ボタンで、文字単位まで精密化、空白の違いを無視、大文字小文字を無視、コンテキスト行数を変えます。
 4. `n` / `p` キー（入力欄の外）で変更箇所へ移動します。
 
 入力内容はブラウザの localStorage に保存されます。ローカルで使う場合は `index.html` をブラウザで開いてください。
@@ -26,7 +26,7 @@
 
 - Myers 法（二分分割で線形メモリ）
 - diff-match-patch の semantic cleanup
-- patience / histogram diff（行の対応が読みやすさを決める）
+- patience / histogram diff（行の対応付けが読みやすさを決める）
 - GitHub の word-level highlight
 - difftastic の構造差分（構文木は使わず、行・単語・文字で近似）
 
@@ -38,4 +38,4 @@
 
 ## 対応環境
 
-`Intl.Segmenter`、`ResizeObserver`、`<dialog>` に対応するブラウザが必要です。動作確認は Chrome で行いました。
+`Intl.Segmenter`、`ResizeObserver`、`<dialog>` を使います。動作確認は Chrome のみです。
